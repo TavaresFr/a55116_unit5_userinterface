@@ -13,14 +13,23 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI gameOverText;
 
+    [SerializeField] GameObject titleScreen;
+
     [HideInInspector] public bool isGameActive;
 
     int score = 0;
 
     void Start()
-    {
-        isGameActive = true;
+    {   
         gameOverText.gameObject.SetActive(false);
+        titleScreen.SetActive(true);
+    }
+
+    public void StartGame(int difficulty)
+    {
+        spawnRate /= difficulty;
+        titleScreen.SetActive(false);
+        isGameActive = true;
         StartCoroutine(SpawnTarget());
         score = 0;
         UpdateScore(0);
