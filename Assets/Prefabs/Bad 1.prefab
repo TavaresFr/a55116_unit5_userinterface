@@ -35,7 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!33 &2490401050668697349
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -151,3 +151,5 @@ MonoBehaviour:
   maxTorque: 10
   xRange: 4
   ySpawnPos: -6
+  pointValue: -5
+  explosionParticle: {fileID: 2088871590894813759, guid: 745208c9d6e104225bd99e1ab894e3bb, type: 3}

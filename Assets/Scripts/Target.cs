@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Target : MonoBehaviour
 {
     Rigidbody rb;
@@ -15,8 +16,16 @@ public class Target : MonoBehaviour
     [SerializeField] float xRange = 4f;
 
     [SerializeField] float ySpawnPos = -6f;
+
+    [SerializeField] int pointValue;
+
+    [SerializeField] ParticleSystem explosionParticle;
+
+    GameManager gameManager;
+
     void Start()
     {
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         rb = GetComponent<Rigidbody>();
         rb.AddForce(RandomForce(), ForceMode.Impulse);
         rb.AddTorque(RandomTorque(), RandomTorque(), RandomTorque(), ForceMode.Impulse);
@@ -41,6 +50,8 @@ public class Target : MonoBehaviour
     private void OnMouseDown()
     {
         Destroy(gameObject);
+        Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
+        gameManager.UpdateScore(pointValue);
     }
 
     private void OnTriggerEnter(Collider other)
